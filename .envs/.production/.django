@@ -1,0 +1,6 @@
+DJANGO_DEBUG=True
+DJANGO_SECRET_KEY=_s0%ggi#5q+-p4q$*f6l9t()1c&ug+u-m-9^&th=k=wdais8u1
+DJANGO_REDIS_URL=
+DJANGO_ALLOWED_HOSTS=0.0.0.0,127.0.0.1,localhost
+DJANGO_URL_ADMIN=http://0.0.0.0:8000/admin/
+DJANGO_SETTINGS_MODULE=config.settings.production

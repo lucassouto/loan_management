@@ -1,0 +1,64 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/local/django/Dockerfile
+    image: loan_management_local_app
+    env_file:
+      - ./.envs/.local/.django
+      - ./.envs/.local/.postgres
+    volumes:
+      - .:/opt/services/loan_management/src
+      - local_static_volume:/opt/services/loan_management/src/static
+      - local_media_volume:/opt/services/loan_management/src/media
+    networks:
+      - local_nginx_network
+      - local_postgres_network
+    depends_on:
+      - postgres
+    stdin_open: true
+    tty: true
+    command: /start.sh
+
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/local/nginx/Dockerfile
+    image: loan_management_local_nginx
+    ports:
+      - 8000:80
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - local_static_volume:/opt/services/loan_management/src/static
+      - local_media_volume:/opt/services/loan_management/src/media
+    depends_on:
+      - app
+    networks:
+      - local_nginx_network
+
+  postgres:
+    build:
+      context: .
+      dockerfile: docker/local/postgres/Dockerfile
+    image: loan_management_local_postgres
+    ports:
+      - 5432:5432
+    env_file:
+      - ./.envs/.local/.postgres
+    networks:
+      - local_postgres_network
+    volumes:
+      - local_postgres_volume:/var/lib/postgres/data
+
+networks:
+  local_nginx_network:
+    driver: bridge
+  local_postgres_network:
+    driver: bridge
+
+volumes:
+  local_postgres_volume:
+  local_static_volume:
+  local_media_volume:
