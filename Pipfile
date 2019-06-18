@@ -24,6 +24,7 @@ coverage = ">=4.5.1"
 django-coverage-plugin = ">=1.5.0"
 pylava = ">=0.2.1"
 mypy = ">=0.701"
+ipython = "*"
 
 [requires]
 python_version = "3.7"
