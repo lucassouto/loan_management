@@ -62,6 +62,7 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     'loan_management.api',
+    'loan_management.users',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -80,6 +81,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
+AUTH_USER_MODEL = 'users.User'
 
 # MIDDLEWARE
 # ------------------------------------------------------------------------------
