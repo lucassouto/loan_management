@@ -32,3 +32,12 @@ clean-test:
 	rm -fr .tox/
 	rm -f .coverage
 	rm -fr htmlcov/
+
+tests-e2e:
+	pytest loan_management/tests_e2e
+
+tests-unit:
+	pytest loan_management/tests_unit
+
+tests-all:
+	tox

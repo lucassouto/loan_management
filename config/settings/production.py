@@ -79,3 +79,5 @@ LOGGING = {
         }
     }
 }
+
+CORS_ORIGIN_WHITELIST = config('DJANGO_CORS_ORIGIN_WHITELIST', default=['example.com'], cast=lambda v: [s.strip() for s in v.split(',')])
