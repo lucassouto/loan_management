@@ -10,9 +10,8 @@ up-local:
 	docker-compose -f local.yml logs -f
 
 down-local:
-	docker-compose -f local.yml down
+	docker-compose -f local.yml down -v
 	docker-compose -f local.yml rm -f
-	docker volume prune -f
 
 clean: clean-build clean-pyc clean-test
 
