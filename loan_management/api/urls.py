@@ -1,10 +1,10 @@
-from django.urls import path
-from .views import HelloProject
+from rest_framework.routers import SimpleRouter
+from .views import HealthCheck
 
-
-list_actions = {'get': 'list'}
 
 app_name = 'api'
-urlpatterns = [
-    path('hello_project/', HelloProject.as_view(list_actions), name='hello_project')
-]
+
+router = SimpleRouter()
+router.register('health-check', HealthCheck, base_name='health_check')
+
+urlpatterns = router.urls

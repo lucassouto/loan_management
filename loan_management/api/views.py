@@ -2,6 +2,6 @@ from rest_framework import status, viewsets
 from rest_framework.response import Response
 
 
-class HelloProject(viewsets.ViewSet):
+class HealthCheck(viewsets.ViewSet):
     def list(self, request):
-        return Response({'message': 'Hello Project!!!'}, status=status.HTTP_200_OK)
+        return Response({'message': 'healthy'}, status=status.HTTP_200_OK)
