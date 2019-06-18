@@ -14,6 +14,7 @@ python-decouple = ">=3.1"
 Unipath = ">=1.1"
 gunicorn = ">=19.9.0"
 werkzeug = "*"
+djangorestframework-jwt = "*"
 
 [dev-packages]
 pytest = ">=3.6.3"
