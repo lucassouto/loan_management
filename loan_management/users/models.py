@@ -12,7 +12,7 @@ class User(AbstractUser):
 
 
 class Address(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="adresses")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='adresses')
     street = models.CharField(max_length=255)
     number = models.IntegerField()
     complement = models.TextField(blank=True)

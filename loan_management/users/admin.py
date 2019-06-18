@@ -13,7 +13,7 @@ class LoanManagementUserAdmin(UserAdmin):
     form = LoanManagementUserChangeForm
 
     fieldsets = UserAdmin.fieldsets + (
-        ("Extra fields", {"fields": ("id_external", "name", "registry_code", "phone")}),
+        ('Extra fields', {'fields': ('id_external', 'name', 'registry_code', 'phone')}),
     )
 
 
