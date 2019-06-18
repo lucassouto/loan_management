@@ -1,6 +1,7 @@
 """
 Base settings to build other settings files upon.
 """
+import datetime
 import os
 from unipath import Path
 from decouple import config
@@ -133,3 +134,10 @@ ADMINS = [
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
+
+JWT_AUTH = {
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(minutes=15),
+
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+}
