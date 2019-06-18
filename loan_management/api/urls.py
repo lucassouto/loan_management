@@ -7,7 +7,7 @@ from .views import HealthCheck
 app_name = 'api'
 
 router = SimpleRouter()
-router.register('health-check', HealthCheck, base_name='health_check')
+router.register('health-check', HealthCheck, basename='health_check')
 
 urlpatterns = [
     path('obtain-token/', ObtainJSONWebToken.as_view()),

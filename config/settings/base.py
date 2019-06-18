@@ -61,6 +61,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework_jwt',
+    'corsheaders',
 ]
 LOCAL_APPS = [
     'loan_management.api',
@@ -90,7 +91,7 @@ AUTH_USER_MODEL = 'users.User'
 # MIDDLEWARE
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#middleware
-MIDDLEWARE = [
+DJANGO_MIDDLEWARES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -99,6 +100,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+THIRD_PARTY_MIDDLEWARES = [
+    'corsheaders.middleware.CorsMiddleware'
+]
+
+MIDDLEWARE = THIRD_PARTY_MIDDLEWARES + DJANGO_MIDDLEWARES
 
 # STATIC
 # ------------------------------------------------------------------------------
@@ -142,3 +149,5 @@ JWT_AUTH = {
 
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
 }
+
+BASE_URL = config('DJANGO_BASE_URL', default='http://0.0.0.0:8000', cast=str)
