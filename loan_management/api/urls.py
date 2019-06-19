@@ -14,6 +14,7 @@ urlpatterns = [
     path('refresh-token/', RefreshJSONWebToken.as_view(), name='refresh_token'),
     path('verify-token/', VerifyJSONWebToken.as_view(), name='verify_token'),
     path('', include('loan_management.users.urls')),
+    path('', include('loan_management.banks.urls')),
 ]
 
 urlpatterns += router.urls
