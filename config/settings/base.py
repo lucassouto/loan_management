@@ -67,6 +67,7 @@ LOCAL_APPS = [
     'loan_management.api',
     'loan_management.users',
     'loan_management.banks',
+    'loan_management.loans',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
