@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from rest_framework.routers import SimpleRouter
 from rest_framework_jwt.views import ObtainJSONWebToken, RefreshJSONWebToken, VerifyJSONWebToken
 from .views import HealthCheck
@@ -10,9 +10,10 @@ router = SimpleRouter()
 router.register('health-check', HealthCheck, basename='health_check')
 
 urlpatterns = [
-    path('obtain-token/', ObtainJSONWebToken.as_view()),
-    path('refresh-token/', RefreshJSONWebToken.as_view()),
-    path('verify-token/', VerifyJSONWebToken.as_view()),
+    path('obtain-token/', ObtainJSONWebToken.as_view(), name='obtain_token'),
+    path('refresh-token/', RefreshJSONWebToken.as_view(), name='refresh_token'),
+    path('verify-token/', VerifyJSONWebToken.as_view(), name='verify_token'),
+    path('', include('loan_management.users.urls')),
 ]
 
 urlpatterns += router.urls
