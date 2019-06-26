@@ -152,8 +152,6 @@ JWT_AUTH = {
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
 }
 
-BASE_URL = config('DJANGO_BASE_URL', default='http://0.0.0.0:8000', cast=str)
-
 REST_FRAMEWORK = {
     "DATE_INPUT_FORMATS": [
         "%d/%m/%Y",
