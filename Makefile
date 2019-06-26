@@ -34,10 +34,12 @@ clean-test:
 	rm -fr htmlcov/
 
 tests-e2e:
-	pytest loan_management/tests_e2e
+	docker-compose -f local.yml up -d --build
+	docker-compose -f local.yml run --rm app pytest loan_management/tests_e2e --cov
 
 tests-unit:
 	pytest loan_management/tests_unit
 
 tests-all:
-	tox
+	docker-compose -f local.yml up -d --build
+	docker-compose -f local.yml run --rm app pytest --cov
