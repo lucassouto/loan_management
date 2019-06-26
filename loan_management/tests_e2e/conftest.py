@@ -1,14 +1,9 @@
 import pytest
 
-from rest_framework_jwt.settings import api_settings
-from loan_management.tests_e2e.factories import UserFactory
-
 
 @pytest.fixture()
-def token():
-    user = UserFactory()
+def auth_client(client, django_user_model):
+    django_user_model.objects.create_user(username='lucas', password='teste')
 
-    jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
-    jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
-    payload = jwt_payload_handler(user)
-    return jwt_encode_handler(payload)
+    client.login(username='lucas', password='teste')
+    return client
