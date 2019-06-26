@@ -1,9 +1,7 @@
-from django.conf import settings
 from django.urls import reverse
 
 
 def test_health_api(client):
-    url = settings.BASE_URL + reverse('api:health_check-list')
-    response = client.get(url)
+    response = client.get(reverse('api:health_check-list'))
 
     assert response.status_code == 200
