@@ -33,13 +33,13 @@ clean-test:
 	rm -f .coverage
 	rm -fr htmlcov/
 
-tests-e2e:
+tests-e2e: clean
 	docker-compose -f local.yml up -d --build
 	docker-compose -f local.yml run --rm app pytest loan_management/tests_e2e --cov
 
 tests-unit:
 	pytest loan_management/tests_unit
 
-tests-all:
+tests-all: clean
 	docker-compose -f local.yml up -d --build
 	docker-compose -f local.yml run --rm app pytest --cov
