@@ -1,4 +1,11 @@
 import pytest
+from pytest_factoryboy import register
+
+from .factories import BankFactory, ContractFactory, UserFactory
+
+register(BankFactory)
+register(ContractFactory)
+register(UserFactory)
 
 
 @pytest.fixture()
