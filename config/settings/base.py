@@ -3,10 +3,10 @@ Base settings to build other settings files upon.
 """
 import datetime
 import os
-from unipath import Path
+
 from decouple import config
 from dj_database_url import parse as db_url
-
+from unipath import Path
 
 ROOT_DIR = Path(__file__).ancestor(3)
 APPS_DIR = ROOT_DIR.child('loan_management')

@@ -2,8 +2,9 @@
 With these settings, tests run faster.
 """
 
-from .base import *  # noqa
 from decouple import config
+
+from .base import *  # noqa
 
 # GENERAL
 # ------------------------------------------------------------------------------

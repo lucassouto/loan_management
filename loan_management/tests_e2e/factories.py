@@ -1,11 +1,9 @@
 import factory
-
 from faker import Faker
 
 from ..banks.models import Bank
 from ..loans.models import Contract
 from ..users.models import User
-
 
 fake = Faker()
 

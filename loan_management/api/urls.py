@@ -1,8 +1,8 @@
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework.routers import SimpleRouter
 from rest_framework_jwt.views import ObtainJSONWebToken, RefreshJSONWebToken, VerifyJSONWebToken
-from .views import HealthCheck
 
+from .views import HealthCheck
 
 app_name = 'api'
 
