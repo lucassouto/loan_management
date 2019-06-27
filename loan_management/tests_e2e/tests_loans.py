@@ -33,3 +33,30 @@ def test_delete_contracts(auth_client, contract):
     response = auth_client.delete(reverse('api:loans:contracts-detail', kwargs={'pk': contract.id}))
 
     assert response.status_code == 204
+
+
+@pytest.mark.django_db
+def test_get_payments(auth_client):
+    response = auth_client.get(reverse('api:loans:payments-list'))
+
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_post_payments(auth_client, contract):
+    data = {
+            'payment_date': fake.date_time(),
+            'payment_amount': fake.pydecimal(left_digits=4, right_digits=2, positive=True),
+            'contract': contract.id,
+    }
+
+    response = auth_client.post(reverse('api:loans:payments-list'), data=data)
+
+    assert response.status_code == 201
+
+
+@pytest.mark.django_db
+def test_delete_payments(auth_client, payment):
+    response = auth_client.delete(reverse('api:loans:payments-detail', kwargs={'pk': payment.id}))
+
+    assert response.status_code == 204
