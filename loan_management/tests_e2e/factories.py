@@ -2,7 +2,7 @@ import factory
 from faker import Faker
 
 from ..banks.models import Bank
-from ..loans.models import Contract
+from ..loans.models import Contract, Payment
 from ..users.models import User
 
 fake = Faker()
@@ -35,3 +35,12 @@ class ContractFactory(factory.django.DjangoModelFactory):
     submission_date = fake.date_time()
     bank = factory.SubFactory(BankFactory)
     client = factory.SubFactory(UserFactory)
+
+
+class PaymentFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Payment
+
+    payment_date = fake.date_time()
+    payment_amount = fake.pydecimal(left_digits=4, right_digits=2, positive=True)
+    contract = factory.SubFactory(ContractFactory)
