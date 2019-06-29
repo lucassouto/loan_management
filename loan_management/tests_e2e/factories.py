@@ -1,4 +1,5 @@
 import factory
+from django.utils import timezone
 from faker import Faker
 
 from ..banks.models import Bank
@@ -32,7 +33,7 @@ class ContractFactory(factory.django.DjangoModelFactory):
     amount = fake.pydecimal(left_digits=4, right_digits=2, positive=True)
     interest_rate = 1
     ip_address = fake.ipv4_private()
-    submission_date = fake.date_time()
+    submission_date = fake.date_time(tzinfo=timezone.utc)
     bank = factory.SubFactory(BankFactory)
     client = factory.SubFactory(UserFactory)
 
@@ -41,6 +42,6 @@ class PaymentFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Payment
 
-    payment_date = fake.date_time()
+    payment_date = fake.date_time(tzinfo=timezone.utc)
     payment_amount = fake.pydecimal(left_digits=4, right_digits=2, positive=True)
     contract = factory.SubFactory(ContractFactory)
