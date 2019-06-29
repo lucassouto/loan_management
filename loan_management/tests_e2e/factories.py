@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 import factory
 from django.utils import timezone
 from faker import Faker
@@ -31,7 +33,7 @@ class ContractFactory(factory.django.DjangoModelFactory):
         model = Contract
 
     amount = fake.pydecimal(left_digits=4, right_digits=2, positive=True)
-    interest_rate = 1
+    interest_rate = Decimal(0.2)
     ip_address = fake.ipv4_private()
     submission_date = fake.date_time(tzinfo=timezone.utc)
     bank = factory.SubFactory(BankFactory)
