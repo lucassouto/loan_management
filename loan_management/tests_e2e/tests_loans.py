@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 import pytest
 from django.urls import reverse
 from django.utils import timezone
@@ -36,7 +38,7 @@ def test_post_contracts(client, bank, user):
 
     data = {
         'amount': fake.pydecimal(left_digits=4, right_digits=2, positive=True),
-        'interest_rate': 1,
+        'interest_rate': 0.2,
         'ip_address': fake.ipv4_private(),
         'submission_date': fake.date_time(tzinfo=timezone.utc),
         'bank': bank.id,
@@ -91,3 +93,14 @@ def test_delete_payments(client, payment):
     response = client.delete(reverse('api:loans:payments-detail', kwargs={'pk': payment.id}))
 
     assert response.status_code == 405
+
+
+@pytest.mark.django_db
+def test_get_amount_due_contract(client, contract, payment):
+    client.force_login(user=contract.client)
+
+    response = client.get(reverse('api:loans:contracts-amount-due', kwargs={'pk': contract.id}))
+
+    assert response.status_code == 200
+
+    assert contract.amount_due == round(Decimal(response.json()['amount_due']), 2)

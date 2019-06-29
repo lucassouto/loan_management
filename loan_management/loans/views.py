@@ -1,4 +1,6 @@
-from rest_framework import mixins, viewsets
+from rest_framework import mixins, status, viewsets
+from rest_framework.decorators import action
+from rest_framework.views import Response
 
 from .models import Contract, Payment
 from .serializers import ContractSerializer, PaymentSerializer
@@ -13,6 +15,12 @@ class ContractViewSet(
 
     queryset = Contract.objects.all()
     serializer_class = ContractSerializer
+
+    @action(detail=True, methods=['GET'], name='Get amount due contract')
+    def amount_due(self, request, pk=None):
+        contract = Contract.objects.get(id=pk)
+
+        return Response({'amount_due': contract.amount_due}, status=status.HTTP_200_OK)
 
     def get_queryset(self):
         return self.queryset.filter(client=self.request.user)
