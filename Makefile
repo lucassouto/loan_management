@@ -43,3 +43,6 @@ tests-unit:
 tests-all: clean
 	docker-compose -f local.yml up -d --build
 	docker-compose -f local.yml run --rm app pytest --cov
+
+createsuperuser:
+	docker-compose -f local.yml run --rm app python manage.py createsuperuser
