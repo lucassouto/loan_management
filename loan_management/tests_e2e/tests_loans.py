@@ -77,7 +77,7 @@ def test_post_payments(client, contract):
     data = {
         'payment_date': fake.date_time(tzinfo=timezone.utc),
         'payment_amount': fake.pydecimal(left_digits=4, right_digits=2, positive=True),
-        'contract': contract.id,
+        'contract_id': contract.id,
     }
 
     response = client.post(reverse('api:loans:payments-list'), data=data)
