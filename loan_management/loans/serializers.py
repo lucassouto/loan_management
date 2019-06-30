@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
-from .models import Contract, Payment
 from ..users.serializers import UserSerializer
+from .models import Contract, Payment
 
 
 class ContractSerializer(serializers.ModelSerializer):
@@ -9,7 +9,15 @@ class ContractSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Contract
-        fields = ('id', 'client', 'amount', 'interest_rate', 'ip_address', 'bank', 'submission_date')
+        fields = (
+            'id',
+            'client',
+            'amount',
+            'interest_rate',
+            'ip_address',
+            'bank',
+            'submission_date',
+        )
         read_only_fields = ('client',)
 
     def create(self, validated_data):
