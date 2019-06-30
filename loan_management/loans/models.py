@@ -17,6 +17,9 @@ class Contract(TimeStampedModel):
     bank = models.ForeignKey(Bank, on_delete=models.PROTECT, related_name='contracts')
     client = models.ForeignKey(User, on_delete=models.PROTECT, related_name='contracts')
 
+    def __str__(self):
+        return f'Client: {self.client.name} Amount: {self.amount}'
+
     @property
     def amount_due(self) -> Decimal:
         value_with_interest = self.amount + (self.amount * self.interest_rate)
@@ -38,3 +41,6 @@ class Payment(TimeStampedModel):
     payment_date = models.DateTimeField()
     payment_amount = models.DecimalField(max_digits=8, decimal_places=2)
     contract = models.ForeignKey(Contract, on_delete=models.PROTECT, related_name='payments')
+
+    def __str__(self):
+        return f'Client: {self.contract.client.name} Amount: {self.payment_amount}'
