@@ -16,9 +16,9 @@ class ContractViewSet(
     queryset = Contract.objects.all()
     serializer_class = ContractSerializer
 
-    @action(detail=True, methods=['GET'], name='Get amount due contract')
+    @action(detail=True, methods=['GET'], url_path='amount-due', name='Get amount due contract')
     def amount_due(self, request, pk=None):
-        contract = Contract.objects.get(id=pk)
+        contract = self.get_object()
 
         return Response({'amount_due': contract.amount_due}, status=status.HTTP_200_OK)
 
