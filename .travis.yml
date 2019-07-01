@@ -22,3 +22,10 @@ install:
 
 script:
   - sudo make tests
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU_TOKEN
+  app:
+master: loan_management
