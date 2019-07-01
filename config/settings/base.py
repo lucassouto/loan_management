@@ -62,6 +62,7 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework_jwt',
     'corsheaders',
+    'drf_yasg',
 ]
 LOCAL_APPS = [
     'loan_management.api',
@@ -171,3 +172,5 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 20,
 }
+
+LOGIN_URL = '/admin/'

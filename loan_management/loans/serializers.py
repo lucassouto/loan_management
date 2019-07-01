@@ -33,3 +33,7 @@ class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payment
         fields = '__all__'
+
+
+class AmountDueSerializer(serializers.Serializer):
+    amount_due = serializers.DecimalField(max_digits=8, decimal_places=2, read_only=True)

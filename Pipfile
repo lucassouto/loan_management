@@ -17,6 +17,7 @@ werkzeug = "*"
 djangorestframework-jwt = "*"
 django-cors-headers = "*"
 requests = "*"
+drf-yasg = "*"
 
 [dev-packages]
 pytest = ">=3.6.3"

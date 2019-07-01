@@ -1,9 +1,10 @@
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework import mixins, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.views import Response
 
 from .models import Contract, Payment
-from .serializers import ContractSerializer, PaymentSerializer
+from .serializers import AmountDueSerializer, ContractSerializer, PaymentSerializer
 
 
 class ContractViewSet(
@@ -16,6 +17,10 @@ class ContractViewSet(
     queryset = Contract.objects.all()
     serializer_class = ContractSerializer
 
+    @swagger_auto_schema(
+        method='GET',
+        responses={status.HTTP_200_OK: AmountDueSerializer, status.HTTP_404_NOT_FOUND: 'not found'},
+    )
     @action(detail=True, methods=['GET'], url_path='amount-due', name='Get amount due contract')
     def amount_due(self, request, pk=None):
         contract = self.get_object()
