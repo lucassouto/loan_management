@@ -34,7 +34,7 @@ USE_TZ = True
 
 DATABASES = {
     'default': config(
-        'DJANGO_DATABASE_URL',
+        'DATABASE_URL',
         default='sqlite:///' + ROOT_DIR.child('db.sqlite3'),
         cast=db_url
     )
@@ -105,7 +105,8 @@ DJANGO_MIDDLEWARES = [
 ]
 
 THIRD_PARTY_MIDDLEWARES = [
-    'corsheaders.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 MIDDLEWARE = THIRD_PARTY_MIDDLEWARES + DJANGO_MIDDLEWARES
@@ -115,6 +116,7 @@ MIDDLEWARE = THIRD_PARTY_MIDDLEWARES + DJANGO_MIDDLEWARES
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(ROOT_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # TEMPLATES
 # ------------------------------------------------------------------------------

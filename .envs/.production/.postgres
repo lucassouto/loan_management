@@ -1,6 +1,6 @@
-POSTGRES_HOST=postgres
+POSTGRES_HOST=ec2-54-243-47-196.compute-1.amazonaws.com
 POSTGRES_PORT=5432
-POSTGRES_DB=loan_management_production
-POSTGRES_USER=lucas
-POSTGRES_PASSWORD=lucas123
-DJANGO_DATABASE_URL=postgres://lucas:lucas123@postgres:5432/loan_management_production
+POSTGRES_DB=d9jsb33pnsa4o5
+POSTGRES_USER=tqzzjeipypwjeg
+POSTGRES_PASSWORD=7fbbe87ce3a6f0338ab9634c5b3c062e68f8ab97985e3f7155905e5bf1a3fc86
+DATABASE_URL=postgres://tqzzjeipypwjeg:7fbbe87ce3a6f0338ab9634c5b3c062e68f8ab97985e3f7155905e5bf1a3fc86@ec2-54-243-47-196.compute-1.amazonaws.com:5432/d9jsb33pnsa4o5
