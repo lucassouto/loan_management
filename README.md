@@ -36,3 +36,6 @@ make clean
 
 ## Documentação da API
 [Documentação](https://onidata-loan-management.herokuapp.com/api/v1/docs/)
+
+## Área administrativa
+[Admin](https://onidata-loan-management.herokuapp.com/admin/)
