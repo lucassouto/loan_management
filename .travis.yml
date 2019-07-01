@@ -18,6 +18,7 @@ before_install:
 
 install:
   - make build-prd
+  - pip install tox-travis
 
 script:
   - tox
