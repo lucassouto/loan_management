@@ -20,7 +20,7 @@ requests = "*"
 drf-yasg = "*"
 
 [dev-packages]
-pytest = ">=3.6.3"
+pytest = "==4.6.4"
 pytest-django = ">=3.3.3"
 pytest-cov = ">=2.5.1"
 tox = ">=3.1.2"
