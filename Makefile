@@ -25,7 +25,7 @@ createsuperuser:
 	docker-compose -f local.yml run --rm app python manage.py createsuperuser
 
 up-local:
-	docker-compose -f local.yml up -d --build
+	docker-compose -f local.yml up -d
 	docker-compose -f local.yml logs -f
 
 down-local:
@@ -36,5 +36,5 @@ build-prd:
 	docker-compose -f production.yml up -d --build
 
 tests: clean
-	docker-compose -f local.yml up -d --build
+	docker-compose -f local.yml up -d
 	docker-compose -f local.yml run --rm app pytest --cov
