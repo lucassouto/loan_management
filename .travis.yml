@@ -22,6 +22,9 @@ install:
 
 script:
   - sudo make tests
+
+after_success:
+  - pip install pytest pytest-cov codecov
   - pytest --cov
   - codecov
 
