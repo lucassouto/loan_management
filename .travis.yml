@@ -28,4 +28,4 @@ deploy:
   api_key:
     secure: $HEROKU_TOKEN
   app:
-master: loan_management
+master: onidata-loan-management
