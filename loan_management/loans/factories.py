@@ -4,28 +4,11 @@ import factory
 from django.utils import timezone
 from faker import Faker
 
-from ..banks.models import Bank
+from ..banks.factories import BankFactory
 from ..loans.models import Contract, Payment
-from ..users.models import User
+from ..users.factories import UserFactory
 
 fake = Faker()
-
-
-class UserFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = User
-
-    username = fake.simple_profile()['username']
-    email = factory.LazyAttribute(lambda user: f'{user.username}@test.com')
-    password = fake.password()
-
-
-class BankFactory(factory.django.DjangoModelFactory):
-    class Meta:
-        model = Bank
-
-    name = 'Banco do Brasil'
-    tax_identification = '001'
 
 
 class ContractFactory(factory.django.DjangoModelFactory):

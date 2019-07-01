@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.utils import timezone
 from faker import Faker
 
-from .factories import UserFactory
+from loan_management.users.factories import UserFactory
 
 fake = Faker()
 

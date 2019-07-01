@@ -16,7 +16,10 @@ clean-pyc:
 clean-test:
 	rm -fr .tox/
 	rm -f .coverage
+	rm -f .coverage.xml
 	rm -fr htmlcov/
+	rm -fr .mypy_cache/
+	rm -fr .pytest_cache/
 
 createsuperuser:
 	docker-compose -f local.yml run --rm app python manage.py createsuperuser
@@ -35,10 +38,3 @@ build-prd:
 tests: clean
 	docker-compose -f local.yml up -d --build
 	docker-compose -f local.yml run --rm app pytest --cov
-
-tests-e2e: clean
-	docker-compose -f local.yml up -d --build
-	docker-compose -f local.yml run --rm app pytest loan_management/tests_e2e --cov
-
-tests-unit:
-	pytest loan_management/tests_unit

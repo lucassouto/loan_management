@@ -24,7 +24,7 @@ script:
   - sudo make tests
 
 after_success:
-  - pip install pytest pytest-cov codecov
+  - pipenv install --dev --system
   - pytest --cov
   - codecov
 
