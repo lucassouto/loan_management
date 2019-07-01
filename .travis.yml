@@ -1,3 +1,4 @@
+sudo: required
 dist: xenial
 language: python
 
@@ -20,4 +21,4 @@ install:
   - make build-prd
 
 script:
-  - make tests
+  - sudo make tests
