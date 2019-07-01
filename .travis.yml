@@ -17,4 +17,7 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 install:
-  - docker-compose -f production.yml build
+  - make build-prd
+
+script:
+  - tox
